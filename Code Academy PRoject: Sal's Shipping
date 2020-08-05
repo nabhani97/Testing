@@ -1,0 +1,73 @@
+#Code Academy PRoject: Sal's Shipping
+
+cost = "Not Valid Number"
+
+def ground_shipping(weight, premium="No", flat=20):
+  if premium == "Yes":
+    flat = 125
+
+  if weight > 10:
+    cost = 4.75
+  elif 6 < weight <=10:
+    cost = 4
+  elif 2< weight <=6:
+    cost = 3
+  elif 0<= weight <= 2:
+    cost = 1.50
+  else:
+    cost=cost
+  cost = cost*weight
+
+  if cost>125:
+    cost = 125
+  elif 0 < cost:
+   
+    cost += flat
+  return cost
+
+try:
+  print(ground_shipping(4.8))
+
+except:
+  print(cost)
+
+def drone_shipping(weight, premium="No", flat=0):
+  if premium == "Yes":
+    flat = 120
+
+  if weight > 10:
+    cost = 14.25
+  elif 6 < weight <=10:
+    cost = 12
+  elif 2< weight <=6:
+    cost = 9
+  elif 0<= weight <= 2:
+    cost = 4.50
+  else:
+    cost=cost
+
+  if 0 < cost:
+    cost= cost*weight
+    cost += flat
+  return cost
+
+try:
+  print(drone_shipping(4.8))
+
+except:
+  print(cost)
+
+def which_ship(weight, premium = "No", flat=0):
+  ground = ground_shipping(weight,premium,flat=20)
+  drone = drone_shipping(weight,premium,flat)
+
+  if ground> drone:
+    print("Drone is the cheapest")
+    cost = drone
+  else:
+    print ("Ground is the cheapest")
+    cost = ground
+  return cost
+
+print(which_ship(4.8))
+print(which_ship(41.5))
